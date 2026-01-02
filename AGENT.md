@@ -10,6 +10,31 @@ Build a fully functional Vue 3 SPA dashboard for tracking unicorn trading KPIs. 
 
 ---
 
+## CRITICAL: Output Location
+
+**All generated application code MUST be placed in the `generated/` folder.**
+
+This is a strict requirement. The project structure must be:
+
+```
+vibe-benchmark-unicorns/
+├── generated/           ← YOUR APPLICATION GOES HERE
+│   ├── src/
+│   ├── tests/
+│   ├── package.json
+│   └── ...
+├── benchmarks/          ← Benchmark reports go here
+├── specs/               ← Read-only specifications
+├── AGENT.md             ← This file (read-only)
+└── ...
+```
+
+**DO NOT** create application files in the project root. Always work inside `generated/`.
+
+The `generated/` folder is git-ignored, so your implementation will not be committed to the repository.
+
+---
+
 ## Required Reading
 
 Before writing any code, you MUST read and internalize these specification files:
@@ -66,7 +91,14 @@ Execute these phases in order. Do not skip phases.
 
 This project uses **pnpm** as the package manager. Do not use npm or yarn.
 
+**IMPORTANT**: All commands must be run inside the `generated/` folder.
+
 ```bash
+# First, create and enter the generated folder
+mkdir -p generated
+cd generated
+
+# Initialize the Vue project
 pnpm create vite@latest . -- --template vue-ts
 pnpm install
 pnpm add primevue @primevue/themes primeicons
@@ -76,30 +108,33 @@ pnpm add -D playwright @playwright/test
 
 Verify the project runs before proceeding:
 ```bash
+cd generated  # if not already there
 pnpm dev
 ```
 
 ### Phase 2: Project Structure
 
-Create this directory structure:
+Create this directory structure inside `generated/`:
 
 ```
-src/
-  assets/
-  components/
-    common/
-    charts/
-    layout/
-  composables/
-  router/
-  services/
-  stores/
-  types/
-  views/
-tests/
-  e2e/
-benchmarks/
+generated/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── common/
+│   │   ├── charts/
+│   │   └── layout/
+│   ├── composables/
+│   ├── router/
+│   ├── services/
+│   ├── stores/
+│   ├── types/
+│   └── views/
+└── tests/
+    └── e2e/
 ```
+
+**Note**: The `benchmarks/` folder is at the project root (NOT inside `generated/`).
 
 ### Phase 3: Core Configuration
 
@@ -302,13 +337,14 @@ Do not leave the codebase in a broken state.
 
 Before ending your session, verify ALL items:
 
+- [ ] All code is inside the `generated/` folder
 - [ ] All 11 phases completed
-- [ ] `pnpm build` succeeds
-- [ ] `pnpm dev` shows working application
-- [ ] `pnpm exec playwright test` passes
+- [ ] `pnpm build` succeeds (run from `generated/`)
+- [ ] `pnpm dev` shows working application (run from `generated/`)
+- [ ] `pnpm exec playwright test` passes (run from `generated/`)
 - [ ] No TypeScript errors
 - [ ] No console errors in browser
-- [ ] Benchmark file created in `benchmarks/`
+- [ ] Benchmark file created in `benchmarks/` (project root, NOT in `generated/`)
 
 ---
 

@@ -4,6 +4,11 @@ This is a benchmark project for evaluating AI coding assistants.
 
 **Your task**: Build the Magic Unicorn Trading Dashboard - a Vue 3 SPA with charts, data tables, and KPI cards.
 
+## CRITICAL: Output Locations
+
+- **Application code**: Must be generated inside the `generated/` folder
+- **Benchmark report**: Must be created in the `benchmarks/` folder (project root)
+
 See [AGENT.md](./AGENT.md) for complete implementation instructions.
 
 ## Quick Reference
