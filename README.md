@@ -24,7 +24,11 @@ Build a **Magic Unicorn Trading Dashboard** - a Vue 3 SPA with:
 - Pinia state management
 - E2E tests with Playwright
 
-See the [wireframe](specs/wireframes/unicorn_dashboard_wireframe.png) for the expected UI.
+### Dashboard Wireframe
+
+![Magic Unicorn Trading Dashboard Wireframe](specs/wireframes/unicorn_dashboard_wireframe.png)
+
+*The expected UI layout showing sidebar navigation, KPI cards, charts, geographic distribution, activity feed, and data table.*
 
 ## Quick Start
 
